@@ -9,13 +9,38 @@
 </head>
 <body>
     
-    <h1>Figuring Out How to Upload a File</h1>
-    <div>
-        <!-- different values for accept https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#Unique_file_type_specifiers -->
-        <input type="file" id="fileInput" accept=".jpg"/>
-        <button id = "uploadBtn">Upload</button>
-    </div>
-    
-    <script src="javascripts/index.js"></script>
+
+
+    <!-- different values for accept https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#Unique_file_type_specifiers -->
+    <!-- WHAT THE HECK IS ONCHANGE?!?!?!?! -->
+    <!-- VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV -->
+    <input type="file" id="fileInput" onchange="previewFile()"/>
+    <!-- <button id = "uploadBtn">Upload</button> -->
+
+    <img src="" height="200" alt="">
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script src="javascripts/index.js"></script> -->
+    <script>
+        function previewFile() {
+            const preview = document.querySelector('img');
+            console.log(preview)
+            const file = document.querySelector('input[type=file]').files[0];
+            // console.log(file)
+            const reader = new FileReader();
+            console.log(reader.result)
+            // another load event example https://developer.mozilla.org/en-US/docs/Web/API/FileReader/load_event
+            reader.addEventListener("load", function () {
+                console.log("load occurred")
+                    // convert image file to base64 string
+                console.log(reader.result);
+            }, false);
+        
+            if (file) {
+                reader.readAsDataURL(file);
+                // console.log(reader.readAsDataURL(file))
+            }
+        }
+    </script>
 </body>
 </html>

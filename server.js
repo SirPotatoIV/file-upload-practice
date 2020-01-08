@@ -15,7 +15,7 @@ app.use(express.json());
 // =============================================================
 app.use(express.static('public'))
 require("./routes/api-routes")(app);
-require("./routes/authentication-routes")(app);
+require("./routes/upload-routes")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
