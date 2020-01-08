@@ -1,6 +1,6 @@
 const fileInputEl = document.getElementById("fileInput");
 const uploadBtnEl = document.getElementById("uploadBtn")
-// Code taken from link below. Can't figure out why mine isn't working like the example.
+// SWEET BABY JESUS SEE INDEX.HTML FOR NOW TO SEE HOW TO GET THIS TO WORK. THERE WAS A WEIRD ATTRIBUTE ON THE INPUT.
 // https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
 function previewFile() {
     const preview = document.querySelector('img');
