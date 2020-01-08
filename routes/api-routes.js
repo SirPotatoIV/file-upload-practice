@@ -10,7 +10,6 @@ module.exports = function(app){
         db.Images.create({
             image_string: req.body.image_string,
         }).then(function(dbString) {
-          // We have access to the new todo as an argument inside of the callback function
           res.json(dbString);
         })
           .catch(function(err) {
@@ -20,5 +19,22 @@ module.exports = function(app){
           });
 
     })
+    app.post("/api/articles", async function(req, res){
+      const {user_id, title, text, image_string} = req.body
+
+      db.Articles.create({
+          user_id,
+          title,
+          text,
+          image_string})
+        .then(function(response) {
+          res.json(response);
+        })
+        .catch(function(err) {
+          console.log(err)
+          res.json(err);
+        });
+
+  })
 
 }

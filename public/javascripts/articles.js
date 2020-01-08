@@ -1,6 +1,11 @@
- const uploadHelpEl = document.getElementById("uploadHelp")
- 
- function previewFile() {
+const uploadHelpEl = document.getElementById("uploadHelp");
+const usernameInputEl = document.getElementById("usernameInput");
+const articleTextEl = document.getElementById("articleText");
+const uploadBtnEl = document.getElementById("uploadBtn");
+const uploadedImageEl = document.getElementById("uploadedImage")
+const tileInputEl = document.getElementById("titleInput")
+
+function uploadImage() {
     console.log("preview file triggered")
     const preview = document.querySelector('img');
 
@@ -13,21 +18,21 @@
         console.log("load function");
         // Updates the img tag with the base64 string that was created
         preview.src = reader.result;
-        const imgString = reader.result;
-        try{
-            const response = await axios.post('/api/Images', {image_string: imgString})
-            console.log("image string posted", response);
-            uploadHelpEl.innerText = "Success!"
-        } 
-        catch(error) {
-            const fileTooLarger = error.message.indexOf("413")
-            console.log(error, fileTooLarger)
-            if(fileTooLarger >=0){
-                uploadHelpEl.innerText = `Error occurred uploading, the image is too large`;
-            }else{
-                uploadHelpEl.innerText = `Error occurred uploading the image: ${error}`
-            }
-        }
+        // const imgString = reader.result;
+        // try{
+        //     const response = await axios.post('/api/Images', {image_string: imgString})
+        //     console.log("image string posted", response);
+        //     uploadHelpEl.innerText = "Success!"
+        // } 
+        // catch(error) {
+        //     const fileTooLarger = error.message.indexOf("413")
+        //     console.log(error, fileTooLarger)
+        //     if(fileTooLarger >=0){
+        //         uploadHelpEl.innerText = `Error occurred uploading, the image is too large`;
+        //     }else{
+        //         uploadHelpEl.innerText = `Error occurred uploading the image: ${error}`
+        //     }
+        // }
     }, false);
 
     if (file) {
@@ -35,5 +40,40 @@
         // This is older code that existed before promises. This handles the async nature of reader.
         // This allows reader to complete reading the file into a url (base64) before the code updates the img with base64 string.
         reader.readAsDataURL(file);
+    }
+}
+
+function uploadBtn() {
+    uploadBtnEl.addEventListener("click", function(){
+        event.preventDefault()
+        getArticleData()
+    })
+}
+uploadBtn()
+
+async function getArticleData() {
+    const username = usernameInputEl.value;
+    const title = tileInputEl.value
+    const articleText = articleTextEl.value;
+    const image = uploadedImageEl.src;
+    if(username && title && articleText && image){
+        try {
+            const response = await axios.post('/api/articles', 
+            {
+                user_id: 1, 
+                title: title,
+                text: articleText,
+                image_string: image
+            })
+            console.log("article posted: ", response);
+            uploadHelpEl.innerText = "Success!"
+        } 
+        catch(error) {
+            console.log("Error occurred uploading article to database: ", error)
+            uploadHelpEl.innerText = `Error occurred uploading article to database: ${error}.`
+        }
+    }else{
+        uploadHelpEl.innerText = "Fill out all the fields"
+        console.log("Fill out all the fields")
     }
 }

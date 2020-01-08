@@ -55,29 +55,31 @@
 
         <div class="row align-items-center my-5">
         <div class="col-lg-7">
-            <form>
             <div class="form-group">
-                <label for="exampleFormControlInput1">Username</label>
-                <input type="text" class="form-control" id="usernameInput" placeholder="neo666">
-            </div>
-            <div class="form-group">
-                <label for="articleText">Article</label>
-                <textarea class="form-control" id="articleText" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Upload</span>
+         
+                    <label for="usernameInput">User ID</label>
+                    <input type="text" class="form-control" id="usernameInput" placeholder="1">
                 </div>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="imageInput" onchange="previewFile()">
-                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                <div class="form-group">
+                    <label for="title">Tile</label>
+                    <input type="text" class="form-control" id="titleInput" placeholder="The Greatest Article Ever">
                 </div>
+                <div class="form-group">
+                    <label for="articleText">Article</label>
+                    <textarea class="form-control" id="articleText" rows="3"></textarea>
                 </div>
-            </div>
-            </form>
-            <small id="uploadHelp" class="form-text text-muted"></small>
-            <img id="uploadedImage" class="img-fluid rounded mb-4 mb-lg-0" src="http://placehold.it/900x400" alt="">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="imageInput" onchange="uploadImage()">
+                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                    </div>
+                </div>
+                <button id="uploadBtn" class="btn btn-primary">Complete Upload</button>
+                <small id="uploadHelp" class="form-text text-muted"></small>
+                <img id="uploadedImage" class="img-fluid rounded mb-4 mb-lg-0" src="http://placehold.it/900x400" alt="">
+         
         </div>
 
         </div>
