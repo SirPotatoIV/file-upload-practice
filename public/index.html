@@ -1,47 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/style.css">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Small Business - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+  <!-- Custom styles for this template -->
+  <!-- <link href="css/small-business.css" rel="stylesheet"> -->
+
 </head>
+
 <body>
-    
 
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
 
-    <!-- different values for accept https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#Unique_file_type_specifiers -->
-    <!-- WHAT THE HECK IS ONCHANGE?!?!?!?! -->
-    <!-- VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV -->
-    <input type="file" id="fileInput" onchange="previewFile()"/>
-    <!-- <button id = "uploadBtn">Upload</button> -->
+    <!-- Page Content -->
+    <div class="container">
 
-    <img src="" height="200" alt="">
+        <div class="row align-items-center my-5">
+        <div class="col-lg-7">
+            <form>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Username</label>
+                <input type="text" class="form-control" id="usernameInput" placeholder="neo666">
+            </div>
+            <div class="form-group">
+                <label for="articleText">Article</label>
+                <textarea class="form-control" id="articleText" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Upload</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="imageInput">
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+                </div>
+            </div>
+            </form>
+            <img id="uploadedImage" class="img-fluid rounded mb-4 mb-lg-0" src="http://placehold.it/900x400" alt="">
+        </div>
 
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+  <!-- Bootstrap core JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- <script src="javascripts/index.js"></script> -->
-    <script>
-        function previewFile() {
-            const preview = document.querySelector('img');
-       
-            const file = document.querySelector('input[type=file]').files[0];
-  
-            const reader = new FileReader();
-      
-            // another load event example https://developer.mozilla.org/en-US/docs/Web/API/FileReader/load_event
-            reader.addEventListener("load", function () {
-                // Updates the img tag with the base64 string that was created
-                preview.src = reader.result;
-            }, false);
+    <script src="/javascripts/articles.js"></script>
+ 
+    </body>
 
-            if (file) {
-                // This triggers the load in the event listener for the reader. 
-                // This is older code that existed before promises. This handles the async nature of reader.
-                // This allows reader to complete reading the file into a url (base64) before the code updates the img with base64 string.
-                reader.readAsDataURL(file);
-            }
-        }
-    </script>
-</body>
 </html>
