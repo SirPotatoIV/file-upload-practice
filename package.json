@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/SirPotatoIV/firebase-authentication-practice#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "image-to-base64": "^2.0.1",
     "mysql2": "^2.1.0",
     "path": "^0.12.7",
